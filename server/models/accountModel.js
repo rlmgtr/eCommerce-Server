@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 accountSchema = ({
 
+isAdmin: {
+type: Boolean,
+default: false,
+},
 name: {
     type: String,
     required: true, 
@@ -37,4 +41,8 @@ type: String,
 required: true,
 },
 }
-})
+}, { timestamps: true, versionKey: false } );
+
+const Account = mongoose.model('Account', accountSchema);
+
+module.exports = Account;
