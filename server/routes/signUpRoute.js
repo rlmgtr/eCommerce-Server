@@ -1,9 +1,8 @@
-
 const express = require('express');
 const router = express.Router();
 
-router.post('/createaccount', (req, res) => {
+router.post('/signup', (req, res) => {
     res.send("this is the create account route")
 });
 
-module.exports = router
+module.exports = router;
