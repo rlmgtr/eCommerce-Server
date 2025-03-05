@@ -1,47 +1,46 @@
 const mongoose = require('mongoose');
 
-accountSchema = ({
-
-isAdmin: {
-type: Boolean,
-default: false,
-},
-name: {
+const accountSchema = new mongoose.Schema({  // Added 'new mongoose.Schema'
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  name: {
     type: String,
     required: true, 
-}, 
-lastName: {
+  }, 
+  lastName: {
     type: String,
     required: true,
-},
-email:{
+  },
+  email: {
     type: String,
-    required: true
-},
-number: {
+    required: true,
+    unique: true, 
+  },
+  number: {
     type: Number,
-    required: false
-},
-
-address: {
-street: {
-type: String,
-required: true,
-},
-brgy: {
-type: String,
-required: true,
-},
-city:{
-type: String,
-required: true,
-}, 
-province: {
-type: String,
-required: true,
-},
-}
-}, { timestamps: true, versionKey: false } );
+    required: false,
+  },
+  address: {
+    street: {
+      type: String,
+      required: true,
+    },
+    brgy: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    }, 
+    province: {
+      type: String,
+      required: true,
+    },
+  }
+}, { timestamps: true, versionKey: false });
 
 const Account = mongoose.model('Account', accountSchema);
 
